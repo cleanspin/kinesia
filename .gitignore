@@ -8,3 +8,4 @@ coverage
 .envrc
 test-results
 playwright-report
+.vercel

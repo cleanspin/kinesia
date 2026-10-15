@@ -1,7 +1,7 @@
 # kinesia
 
 A headless toolkit for React. See the [package README](packages/kinesia/README.md) for usage and
-API.
+API, or try the [live demo](https://kinesia-pearl.vercel.app).
 
 ## Repository
 

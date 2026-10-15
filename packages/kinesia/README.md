@@ -1,6 +1,6 @@
 # kinesia
 
-A headless toolkit for React.
+A headless toolkit for React. [Live demo](https://kinesia-pearl.vercel.app)
 
 kinesia is a growing set of headless tools for React apps. The first one is **swept collision
 detection**: enter and leave events that a fast pointer can't skip, each carrying where the
