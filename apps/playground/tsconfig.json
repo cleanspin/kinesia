@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"],
+    "paths": {
+      "kinesia": ["../../packages/kinesia/src/react/index.ts"],
+      "kinesia/core": ["../../packages/kinesia/src/core/index.ts"]
+    }
+  },
+  "include": ["src", "e2e", "vite.config.ts", "playwright.config.ts"]
+}

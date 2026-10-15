@@ -1,0 +1,71 @@
+{
+  "name": "kinesia",
+  "version": "0.0.0",
+  "description": "A headless toolkit for React. First tool: swept pointer collision detection, so fast pointers can't skip hover and hit events.",
+  "license": "MIT",
+  "author": "Tiago Paim",
+  "homepage": "https://github.com/cleanspin/kinesia#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cleanspin/kinesia.git",
+    "directory": "packages/kinesia"
+  },
+  "bugs": "https://github.com/cleanspin/kinesia/issues",
+  "keywords": [
+    "react",
+    "hooks",
+    "headless",
+    "pointer",
+    "hover",
+    "collision-detection",
+    "continuous-collision-detection",
+    "hit-testing",
+    "interaction"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "default": "./dist/core.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --project tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "happy-dom": "^21.0.1",
+    "publint": "^0.3.25",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tsdown": "^0.23.1",
+    "vitest": "^5.0.4"
+  }
+}

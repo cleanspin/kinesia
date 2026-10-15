@@ -1,0 +1,26 @@
+{
+  "name": "kinesia-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.26.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm --filter kinesia build",
+    "dev": "pnpm --filter playground dev",
+    "test": "pnpm --recursive test",
+    "test:e2e": "pnpm --filter playground test:e2e",
+    "typecheck": "pnpm --recursive typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@changesets/cli": "^3.0.3",
+    "typescript": "^7.0.2"
+  }
+}
