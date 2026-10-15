@@ -69,3 +69,21 @@ test("the highlight follows rows scrolling under a still pointer", async ({ page
     .toBe(true);
   await expect(active).toHaveCount(1);
 });
+
+test("a fast hit breaks the crab wall where it crossed, and the crabs escape", async ({ page }) => {
+  const rect = await box(page.locator(".crab-box"));
+  const y = rect.y + 60;
+
+  await page.mouse.move(rect.x - 80, y);
+  await page.mouse.move(rect.x + 120, y);
+
+  const leftWall = page.locator('.wall[data-edge="left"]');
+  await expect(leftWall).toHaveCount(2);
+  const [above, below] = await leftWall.evaluateAll((lines) =>
+    lines.map((line) => [Number(line.getAttribute("y1")), Number(line.getAttribute("y2"))]),
+  );
+  expect(above?.[1]).toBeLessThan(60);
+  expect(below?.[0]).toBeGreaterThan(60);
+
+  await expect(page.locator(".gallery-meta")).not.toHaveText("0/6 escaped", { timeout: 8000 });
+});

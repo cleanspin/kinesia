@@ -1,6 +1,7 @@
 import { ContactCards } from "./demos/contact-cards";
 import { ImpactGrid } from "./demos/impact-grid";
 import { ScrollList } from "./demos/scroll-list";
+import { Gallery } from "./gallery/gallery";
 import { PointerHud } from "./pointer-hud";
 
 export function App() {
@@ -15,6 +16,7 @@ export function App() {
         <ImpactGrid />
         <ContactCards />
         <ScrollList />
+        <Gallery />
       </main>
       <PointerHud />
     </>
