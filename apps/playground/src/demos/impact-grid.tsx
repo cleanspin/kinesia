@@ -1,10 +1,11 @@
 import { type CollisionEvent, useCollisionGroup } from "kinesia";
-import { type PointerEvent, useRef } from "react";
+import { type PointerEvent, useEffect, useRef } from "react";
 import { useReducedMotion } from "../use-reduced-motion";
 
 const TILES = Array.from({ length: 16 * 9 }, (_, i) => i);
 // A native pointerover this close to the swept contact means the browser saw the tile too.
 const NATIVE_TOLERANCE = 50;
+const IDLE_RESET_MS = 3000;
 
 export function ImpactGrid() {
   const reducedMotion = useReducedMotion();
@@ -12,6 +13,9 @@ export function ImpactGrid() {
   const counts = useRef({ hits: 0, missed: 0 });
   const hitsRef = useRef<HTMLElement>(null);
   const missedRef = useRef<HTMLElement>(null);
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
 
   // Written to the DOM directly to avoid re-rendering the grid on every hit.
   const renderCounts = () => {
@@ -32,6 +36,8 @@ export function ImpactGrid() {
       counts.current.hits++;
       if (missedByBrowser) counts.current.missed++;
       renderCounts();
+      clearTimeout(resetTimer.current);
+      resetTimer.current = setTimeout(reset, IDLE_RESET_MS);
       strike(tile, event, missedByBrowser, reducedMotion);
     },
   });
@@ -80,9 +86,6 @@ export function ImpactGrid() {
           <i className="swatch swatch-native" aria-hidden="true" />
           Seen by both
         </span>
-        <button type="button" className="button" onClick={reset}>
-          Reset
-        </button>
       </div>
     </section>
   );

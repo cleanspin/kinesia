@@ -31,6 +31,9 @@ test("a sweep within a single frame hits every tile it crosses", async ({ page }
   const stats = page.locator(".stats strong");
   await expect(stats.nth(0)).toHaveText("16");
   await expect(stats.nth(1)).toHaveText("16 (100%)");
+
+  await expect(stats.nth(0)).toHaveText("0", { timeout: 5000 });
+  await expect(stats.nth(1)).toHaveText("0 (0%)");
 });
 
 test("cards report the edge the pointer crossed and its speed", async ({ page }) => {

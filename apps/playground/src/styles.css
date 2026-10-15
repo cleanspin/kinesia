@@ -83,21 +83,6 @@ body {
   color: var(--muted);
 }
 
-.button {
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  color: var(--text);
-  font: inherit;
-  cursor: pointer;
-}
-
-.button:hover {
-  border-color: var(--muted);
-}
-
-.button:focus-visible,
 .scroll-list:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
