@@ -1,6 +1,6 @@
 {
   "name": "kinesia",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A headless toolkit for React. First tool: swept pointer collision detection, so fast pointers can't skip hover and hit events.",
   "license": "MIT",
   "author": "Tiago Paim",
