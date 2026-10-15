@@ -162,8 +162,6 @@ const matching = observeMatching(collider, document.body, ".tile");
 4. **Frame phases.** Every kinesia tool measures in a shared read phase and dispatches in a write
    phase afterwards, so the page lays out at most once per frame no matter how many tools run.
 
-Targets far from the viewport are skipped using an `IntersectionObserver`.
-
 ## Good to know
 
 - **Animate a child of the target, not the target itself.** Collisions use the target's bounding
@@ -181,7 +179,7 @@ Targets far from the viewport are skipped using an `IntersectionObserver`.
 ## Browser support
 
 Current versions of Chrome, Edge, Firefox and Safari. kinesia uses Pointer Events,
-`getCoalescedEvents()` where available, `IntersectionObserver` and `MutationObserver`.
+`getCoalescedEvents()` where available, and `MutationObserver`.
 
 ## License
 

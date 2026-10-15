@@ -10,7 +10,6 @@ import {
 } from "../pointer/tracker";
 import type { Edge, Rect, Vector } from "../types";
 import { type Contact, findContacts } from "./contacts";
-import * as proximity from "./proximity";
 
 export interface CollisionEvent {
   readonly type: "enter" | "leave";
@@ -84,7 +83,7 @@ export function createCollider(options: CreateColliderOptions = {}): Collider {
     const events: CollisionEvent[] = [];
 
     for (const [target, record] of targets) {
-      if (!engaged || !target.isConnected || !proximity.isNear(target)) {
+      if (!engaged || !target.isConnected) {
         if (record.inside) {
           record.inside = false;
           events.push(releaseEvent(target, record.rect ?? EMPTY_RECT, frame));
@@ -151,17 +150,14 @@ export function createCollider(options: CreateColliderOptions = {}): Collider {
     observe(target) {
       if (targets.has(target)) return;
       targets.set(target, { rect: null, measuredAt: null, inside: false });
-      proximity.watch(target);
       unsubscribe ??= tracker.onFrame(process);
       tracker.requestFrame();
     },
     unobserve(target) {
       if (!targets.delete(target)) return;
-      proximity.unwatch(target);
       if (targets.size === 0) stop();
     },
     disconnect() {
-      for (const target of targets.keys()) proximity.unwatch(target);
       targets.clear();
       stop();
     },
